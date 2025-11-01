@@ -35,7 +35,7 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Products'
+        verbose_name = 'Product'
         ordering = ['-created_at']
         indexes = [
             models.Index(fields=['name','price']),
