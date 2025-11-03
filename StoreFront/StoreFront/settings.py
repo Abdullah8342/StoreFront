@@ -40,9 +40,10 @@ INSTALLED_APPS = [
     'Account',
     'Profile',
     'Store',
-    # 'Cart',
-    # 'Order',
-    # 'Review',
+    'Cart',
+    'Order',
+    'Payment',
+    'Review',
 ]
 
 AUTH_USER_MODEL = 'Account.AbstractUser'

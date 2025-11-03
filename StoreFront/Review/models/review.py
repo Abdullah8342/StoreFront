@@ -12,13 +12,22 @@ class Review(models.Model):
         MinValueValidator(0)
     ])
     comment = models.TextField(blank=True,null=True)
-    created_at = models.DateTimeField(auto_now=True)
-    product = models.ForeignKey(Product,on_delete=models.CASCADE,related_name='review')
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='review'
+    )
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='review'
     )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Review'
+        unique_together = ('product','user')
+        ordering = ['-created_at']
 
     def __str__(self):
-        return f'{self.comment}'
+        return f'{self.rating} - {self.user}'

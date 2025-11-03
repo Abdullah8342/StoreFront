@@ -6,12 +6,21 @@ class WishList(models.Model):
     '''
     WishList
     '''
-    product = models.ManyToManyField(Product,related_name='wishlist')
-    user = models.ForeignKey(
+    product = models.ManyToManyField(
+        Product,
+        related_name='wishlist'
+    )
+
+    user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='wishlist'
     )
 
+
+    class Meta:
+        verbose_name = 'WishList'
+
+
     def __str__(self):
-        return f'{self.user.username}'
+        return f"{self.user}'s WishList"
